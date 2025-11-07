@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Luminux - Advanced AI Research Assistant</title>
+  <title>Luminux - Lumi (Advanced AI Research Assistant)</title>
   <style>
     :root{
       --bg:#0f1720;
@@ -16,58 +16,15 @@
       --thinking-bg: rgba(74, 134, 232, 0.1);
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;color:#e6eef6;background:linear-gradient(180deg,#071027 0%, #071722 100%);}
-    .app{width:820px;max-width:96%;margin:28px auto;border-radius:12px;overflow:hidden;box-shadow:0 10px 40px rgba(2,6,23,0.6);}
-    header{padding:18px 22px;background:linear-gradient(90deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));display:flex;align-items:center;gap:12px}
-    header h1{font-size:16px;margin:0;color:#e6eef6}
-    header p{margin:0;color:var(--muted);font-size:13px}
-    .main{display:flex;gap:0;background:var(--card)}
-    .sidebar{width:220px;padding:16px;border-right:1px solid rgba(255,255,255,0.02);background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);}
-    .sidebar .title{font-weight:600;color:#cfe3ff;margin-bottom:8px}
-    .sidebar .desc{font-size:13px;color:var(--muted);margin-bottom:12px}
-    .sidebar .meta{font-size:13px;color:var(--muted);margin-top:6px}
-    .chat-wrap{flex:1;display:flex;flex-direction:column;height:640px}
-    .chat{flex:1;overflow:auto;padding:20px;display:flex;flex-direction:column;gap:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);}
-    .msg{display:flex;gap:12px;align-items:flex-end;max-width:90%}
-    .msg.user{margin-left:auto;flex-direction:row-reverse}
-    .avatar{width:36px;height:36px;border-radius:10px;flex-shrink:0;background:linear-gradient(180deg,#0ea5e9,#2563eb);display:grid;place-items:center;color:white;font-weight:700;cursor:help;position:relative}
-    .avatar::after{content:attr(title);position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.8);color:white;padding:4px 8px;border-radius:4px;font-size:11px;white-space:nowrap;opacity:0;transition:opacity 0.3s;pointer-events:none}
-    .avatar:hover::after{opacity:1}
-    .bubble{padding:12px 14px;border-radius:12px;color:#eaf4ff;line-height:1.45;font-size:14px;white-space:pre-wrap}
-    .bubble.ai{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));color:#dbe9ff;border:1px solid rgba(255,255,255,0.02)}
-    .bubble.user{background:linear-gradient(180deg, rgba(37,99,235,0.15), rgba(37,99,235,0.08));border:1px solid rgba(37,99,235,0.14);color:#eaf4ff}
-    .meta{font-size:12px;color:var(--muted);margin-top:6px}
-    .controls{display:flex;gap:8px;padding:14px;border-top:1px solid rgba(255,255,255,0.02);background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
-    .input{flex:1;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:var(--glass);color:#eaf4ff;outline:none}
-    .btn{padding:10px 14px;border-radius:10px;border:0;background:var(--accent);color:white;cursor:pointer;font-weight:600}
-    .small{font-size:12px;color:var(--muted)}
-    .typing{display:inline-block;height:12px;vertical-align:middle}
-    .dot{width:6px;height:6px;background:rgba(255,255,255,0.6);border-radius:50%;display:inline-block;margin-right:4px;opacity:0;transform:translateY(0);animation:blink 1.2s infinite}
-    .dot:nth-child(1){animation-delay:0s}
-    .dot:nth-child(2){animation-delay:.15s}
-    .dot:nth-child(3){animation-delay:.3s}
-    @keyframes blink{0%{opacity:.08;transform:translateY(0)}50%{opacity:1;transform:translateY(-4px)}100%{opacity:.08;transform:translateY(0)}}
-    .controls .options{display:flex;gap:8px;align-items:center}
-    .sources-hidden{display:none}
-    .summary-low{opacity:.85;color:#ffd9d3}
-    /* Advanced thinking process */
-    .thinking-process{font-size:12px;color:#9aa4b2;margin-bottom:8px;padding:8px;background:var(--thinking-bg);border-radius:8px;border-left:3px solid #4a86e8}
-    .thinking-process strong{color:#cfe3ff}
-    .main-response{margin-top:8px}
-    /* compact source pill (no links) */
-    .source-pill{display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02);font-size:12px;color:var(--muted);margin-right:6px;margin-top:8px}
-    footer{padding:12px 18px;background:linear-gradient(180deg, transparent, rgba(255,255,255,0.01));font-size:12px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
-    /* Memory indicator */
-    .memory-indicator{display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;margin-right:6px;animation:pulse 2s infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;color:#e6eef6;background:linear-gradient(180deg,#071027 0%, #071722 100%);}    .app{width:820px;max-width:96%;margin:28px auto;border-radius:12px;overflow:hidden;box-shadow:0 10px 40px rgba(2,6,23,0.6);}    header{padding:18px 22px;background:linear-gradient(90deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));display:flex;align-items:center;gap:12px}    header h1{font-size:16px;margin:0;color:#e6eef6}    header p{margin:0;color:var(--muted);font-size:13px}    .main{display:flex;gap:0;background:var(--card)}    .sidebar{width:220px;padding:16px;border-right:1px solid rgba(255,255,255,0.02);background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);}    .sidebar .title{font-weight:600;color:#cfe3ff;margin-bottom:8px}    .sidebar .desc{font-size:13px;color:var(--muted);margin-bottom:12px}    .sidebar .meta{font-size:13px;color:var(--muted);margin-top:6px}    .chat-wrap{flex:1;display:flex;flex-direction:column;height:640px}    .chat{flex:1;overflow:auto;padding:20px;display:flex;flex-direction:column;gap:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);}    .msg{display:flex;gap:12px;align-items:flex-end;max-width:90%}    .msg.user{margin-left:auto;flex-direction:row-reverse}    .avatar{width:36px;height:36px;border-radius:10px;flex-shrink:0;background:linear-gradient(180deg,#0ea5e9,#2563eb);display:grid;place-items:center;color:white;font-weight:700;cursor:help;position:relative}    .avatar::after{content:attr(title);position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.8);color:white;padding:4px 8px;border-radius:4px;font-size:11px;white-space:nowrap;opacity:0;transition:opacity 0.3s;pointer-events:none}    .avatar:hover::after{opacity:1}    .bubble{padding:12px 14px;border-radius:12px;color:#eaf4ff;line-height:1.45;font-size:14px;white-space:pre-wrap}    .bubble.ai{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));color:#dbe9ff;border:1px solid rgba(255,255,255,0.02)}    .bubble.user{background:linear-gradient(180deg, rgba(37,99,235,0.15), rgba(37,99,235,0.08));border:1px solid rgba(37,99,235,0.14);color:#eaf4ff}    .meta{font-size:12px;color:var(--muted);margin-top:6px}    .controls{display:flex;gap:8px;padding:14px;border-top:1px solid rgba(255,255,255,0.02);background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}    .input{flex:1;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:var(--glass);color:#eaf4ff;outline:none}    .btn{padding:10px 14px;border-radius:10px;border:0;background:var(--accent);color:white;cursor:pointer;font-weight:600}    .small{font-size:12px;color:var(--muted)}    .typing{display:inline-block;height:12px;vertical-align:middle}    .dot{width:6px;height:6px;background:rgba(255,255,255,0.6);border-radius:50%;display:inline-block;margin-right:4px;opacity:0;transform:translateY(0);animation:blink 1.2s infinite}    .dot:nth-child(1){animation-delay:0s}    .dot:nth-child(2){animation-delay:.15s}    .dot:nth-child(3){animation-delay:.3s}    @keyframes blink{0%{opacity:.08;transform:translateY(0)}50%{opacity:1;transform:translateY(-4px)}100%{opacity:.08;transform:translateY(0)}}    .controls .options{display:flex;gap:8px;align-items:center}    .sources-hidden{display:none}    .summary-low{opacity:.85;color:#ffd9d3}    /* Advanced thinking process */    .thinking-process{font-size:12px;color:#9aa4b2;margin-bottom:8px;padding:8px;background:var(--thinking-bg);border-radius:8px;border-left:3px solid #4a86e8}    .thinking-process strong{color:#cfe3ff}    .main-response{margin-top:8px}    /* compact source pill (no links) */    .source-pill{display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02);font-size:12px;color:var(--muted);margin-right:6px;margin-top:8px}    footer{padding:12px 18px;background:linear-gradient(180deg, transparent, rgba(255,255,255,0.01));font-size:12px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}    /* Memory indicator */    .memory-indicator{display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;margin-right:6px;animation:pulse 2s infinite}    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}    details summary{cursor:pointer}    .creator-note{font-size:12px;color:var(--muted);margin-top:10px}
   </style>
 </head>
 <body>
   <div class="app" role="application" aria-label="Luminux AI chat">
     <header>
       <div style="display:flex;flex-direction:column">
-        <h1>Luminux - Advanced AI Research Model</h1>
-        <p>Multi-modal reasoning • Contextual memory • Emotional intelligence • Cross-domain synthesis</p>
+        <h1>Luminux — Lumi</h1>
+        <p>Modular reasoning • Deep awareness • High-level multi-source research</p>
       </div>
     </header>
 
@@ -77,20 +34,24 @@
         <div id="chat" class="chat" aria-live="polite"></div>
 
         <div class="controls">
-          <input id="input" class="input" placeholder="Ask me anything - I'll analyze with advanced reasoning and memory..." aria-label="Message input" />
+          <input id="input" class="input" placeholder="Ask Lumi anything — she reasons, researches, and remembers..." aria-label="Message input" />
           <div class="options" style="align-items:center">
             <button id="send" class="btn">Analyze</button>
           </div>
         </div>
 
         <footer>
-          <div class="small"><span class="memory-indicator"></span>Luminux v2.0 • Advanced reasoning active</div>
+          <div class="small">
+            <span class="memory-indicator"></span>
+            Lumi v2.0 • High-search mode • Deep awareness active
+            <div class="creator-note">Created by Thembeni Manganye — Founder of Luminux XD (age 15). Built to help people learn and build AI without needing a paid API key.</div>
+          </div>
           <div id="status" class="small">System ready</div>
         </footer>
       </section>
     </div>
   </div>
 
-  <script src="Luminux.js"></script>
+  <script src="lumi.js"></script>
 </body>
 </html>
